@@ -4,7 +4,7 @@ let thirdLine = "JavaScript is amazing"
 
 let i = 3;
 
-for(i=1; i<3; i++){
+for (i = 1; i < 3; i++){
     console.log(firstLine)
     console.log(secondLine)
     console.log(thirdLine)
