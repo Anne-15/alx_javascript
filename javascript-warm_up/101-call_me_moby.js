@@ -1,6 +1,5 @@
-function func1(x, theFunction) {
-    if (x > 0) {
+function callMeMoby(x, theFunction) {
+    for(let i = 0; i < x; i++) {
         theFunction();
-        func1(x - 1, theFunction);
     }
 }
