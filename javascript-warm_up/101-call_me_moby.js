@@ -1,4 +1,4 @@
-function callMeMoby(x, theFunction) {
+function executeXtimes(x, theFunction) {
     for(let i = 0; i < x; i++) {
         theFunction();
     }
