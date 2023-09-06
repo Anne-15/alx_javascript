@@ -15,5 +15,6 @@ module.exports = class Rectangle {
                 row += 'X';
             }
         }
+        console.log(row)
     }
 }
