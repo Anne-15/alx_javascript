@@ -18,13 +18,14 @@ module.exports = class Rectangle {
         }
     }
 
+    rotate(){
+        const temp = this.width;
+        this.width = this.height;
+        this.height = temp;
+    }
+
     double(){
-        for (let i = 0; i < this.height; i++){
-            let row = '';
-            for (let j = 0; j < this.width; j++){
-                row += 'X'*2;
-            }
-            console.log(row)
-        }
+        this.height * 2;
+        this.width * 2;
     }
 }
