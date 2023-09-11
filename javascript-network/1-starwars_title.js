@@ -10,7 +10,7 @@ request.get(url, (error, response, body) => {
         try {
             const movieData = JSON.parse(body);
             const movieTitle = movieData.title;
-            console.log(`Title: ${movieTitle}`);
+            console.log(movieTitle);
         } catch (error) {
             console.log(error)
         }
