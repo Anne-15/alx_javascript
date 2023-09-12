@@ -1,4 +1,4 @@
-import { get } from 'request';
+const request = require('request');
 const url = process.argv[2];
 const characterId = 18;
 
