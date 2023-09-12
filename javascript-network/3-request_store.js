@@ -19,7 +19,7 @@ request.get(url, (error, response, body) => {
                 console.error(`An error occurred: ${error.message}`);
             }
             //log a success message
-            console.log('The contents of ' + url + ' have been stored in ' + filePath);
+            // console.log('The contents of ' + url + ' have been stored in ' + filePath);
         });
     } else {
         //log an error messgae
