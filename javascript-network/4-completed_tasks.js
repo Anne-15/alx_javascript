@@ -10,11 +10,19 @@ request.get(url, (error, response, body) => {
     if (response.statusCode == 200) {
         const data = JSON.parse(body);
         const count = {};
-        data.forEach((task) => {
-            if (task.completed) {
-              const userId = task.userId.toString();
-              count[userId] = (count[userId] || 0) + 1;
+        for (let item in data){
+            let userId = item.userId;
+            let completed = item.completed;
+            //if item is completed increase the count of the user id
+            if (completed) {
+                // If the user id is not in the results object, initialize it with zero
+                if(!count[userId]){
+                    count[userId] = 0;
+                }
+                //increment count by 1
+                count[userId]++;
             }
-          });
+        }
+        console.log(count)
     }
 })
