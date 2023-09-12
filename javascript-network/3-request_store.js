@@ -11,7 +11,7 @@ request.get(url, (error, response, body) => {
     //check for success
     if(response.statusCode == 200){
         //import fs module
-        var fs = require('fs');
+        const fs = require('fs');
         //write the body response to UFT-8
         fs.writeFile(filePath, body, 'utf-8', (error) => {
             //check for errors
