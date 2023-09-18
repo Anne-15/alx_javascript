@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script></script>
 </head>
 <body>
     <h1>Login to the website</h1>
@@ -14,5 +13,18 @@
     
     <h1>Cookies</h1>
     <button onclick="showCookies()">Show me the cookies</button>
+
+    <script>
+        function setCookies () {
+            const firstname = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+
+            document.cookie = `firstname=${firstname}`;
+            document.cookie = `email=${email}`;
+        }
+        function showCookies () {
+            
+        }
+    </script>
 </body>
 </html>
