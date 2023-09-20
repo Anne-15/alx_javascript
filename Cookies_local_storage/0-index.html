@@ -9,10 +9,10 @@
     <h1>Login to the website</h1>
     <input type="text" placeholder="First Name" id="firstname">
     <input type="text" placeholder="Email" id="email">
-    <button onclick="setCookies()">Log me in</button>
+    <button onclick = "setCookies()">Log me in</button>
     
     <h1>Cookies</h1>
-    <button onclick="showCookies()">Show me the cookies</button>
+    <button onclick = "showCookies()">Show me the cookies</button>
 
     <script>
         function setCookies () {
@@ -23,7 +23,24 @@
             document.cookie = `email=${email}`;
         }
         function showCookies () {
+            const body = document.body;
+            const p = document.createElement('p');
+
+            let cookies = document.cookie.split(";");
+            let cookieText = 'Cookies: ';
             
+            // Loop through the cookies and add them to the cookieText
+            for (let i = 0; i < cookies.length; i++) {
+                cookieText += cookies[i];
+
+                // Add a comma and space if it's not the last cookie
+                if (i < cookies.length - 1) {
+                    cookieText += ', ';
+                }
+            }
+
+            p.innerHTML = cookieText;
+            body.appendChild(p);
         }
     </script>
 </body>

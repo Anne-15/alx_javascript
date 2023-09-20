@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="showWelcomeMessageOrForm()">
+    <div id="loginForm">
+        <h2>Login to the website</h2>
+        <input type="text" placeholder="First Name" id="firstname">
+        <input type="text" placeholder="Email" id="email">
+        <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+    </div>
+
+    <div id="welcomeMessage"></div>
+
+    <script>
+        function setCookiesAndShowWelcomeMessage() {
+            const firstname = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+            let today = new Date();
+            today.setTime(today.getTime() + 10 * 24 * 60 * 60 * 1000);
+            let expires = "expires="+today.toUTCString();
+
+            Cookies.set("firstname", firstname, expires);
+            Cookies.set("email", email, expires)
+        }
+        
+        function showForm(){
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            const loginForm = document.getElementById("loginForm");
+
+            if(welcomeMessage){
+                welcomeMessage.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+        }
+        function hideForm(){
+            const loginForm = document.getElementById("loginForm");
+
+            if(loginForm){
+                loginForm.style.display = 'none';
+            }
+        }
+        function deleteCookiesAndShowForm(){
+            Cookies.remove("firstname");
+            Cookies.remove("email");
+            //show login form
+            showForm();
+        }
+        function showWelcomeMessageOrForm(){
+            let firstname = Cookies.get("firstname");
+            if(firstname){
+                let h1 = document.createElement("h1");
+                h1.innerHTML = `Welcome: ${firstname} `;
+                let logoutLink = document.createElement("a");
+                logoutLink.href = "#";
+                logoutLink.innerHTML = "(logout)";
+                logoutLink.style.fontStyle = "italic";
+                logoutLink.style.fontWeight = "normal";
+                logoutLink.style.marginLeft = "10px";
+                logoutLink.onclick = deleteCookiesAndShowForm();
+                h1.appendChild(logoutLink);
+                document.body.innerHTML = "";
+                document.body.appendChild(h1);
+            } else {
+                //show form 
+                showForm();
+            }
+        }
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+</body>
+</html>
