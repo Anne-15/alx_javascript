@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Introduction</title>
+</head>
+<body>
+    <p id="myParagraph">This is a paragraph.</p>
+    <script>
+        const paragraph = document.getElementById("myParagraph");
+        paragraph.textContent = "I successfully updated this paragraph with javascript";
+        document.body.appendChild(paragraph);
+    </script>
+</body>
+</html>
