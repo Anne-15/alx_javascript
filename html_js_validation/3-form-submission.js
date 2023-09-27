@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function(){
     function handleFormSubmit (event){
         event.preventDefault();
         //getting the input values
-        const name = document.getElementById('name');
-        const email = document.getElementById('email');
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message');
     
          // Validate form fields
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
             message.style.color = 'red';
         } else {
             // Clear any previous error messages
-            // message.textContent = '';
+            message.textContent = '';
 
             // Display success message
             message.textContent = 'Form submitted successfully!';
@@ -33,4 +33,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Attach the validateForm function to the form submission event
     document.getElementById('submitForm').addEventListener('submit', handleFormSubmit);
-})
+});
