@@ -1,28 +1,40 @@
 const request = require('request');
-const url = 'https://jsonplaceholder.typicode.com/todos';
 
-request.get(url, (error, response, body) => {
-    //check for errors
-    if (error){
-        console.error(`An error occurred: ${error.message}`);
-    } 
-    //check for success
-    if (response.statusCode == 200) {
-        const data = JSON.parse(body);
-        const count = {};
-        for (let item in data){
-            let userId = item.userId;
-            let completed = item.completed;
-            //if item is completed increase the count of the user id
-            if (completed) {
-                // If the user id is not in the results object, initialize it with zero
-                if(!count[userId]){
-                    count[userId] = 0;
-                }
-                //increment count by 1
-                count[userId]++;
+const apiUrl = process.argv[2];
+
+if (!apiUrl) {
+    console.error('Usage: node script.js <API_URL>');
+    process.exit(1);
+}
+
+request(apiUrl, (error, response, body) => {
+    if (error) {
+        console.error('Error:', error);
+        return;
+    }
+
+    if (response.statusCode !== 200) {
+        console.error('Invalid response:', response.statusCode);
+        return;
+    }
+
+    const todos = JSON.parse(body);
+
+    // Create a dictionary to store the number of completed tasks per user
+    const completedTasksByUser = {};
+
+    todos.forEach(todo => {
+        if (todo.completed) {
+            if (completedTasksByUser[todo.userId]) {
+                completedTasksByUser[todo.userId]++;
+            } else {
+                completedTasksByUser[todo.userId] = 1;
             }
         }
-        console.log(count)
-    }
-})
+    });
+
+    // Display the results
+    Object.entries(completedTasksByUser).forEach(([userId, completedTasks]) => {
+        console.log(`User ${userId}: ${completedTasks} completed task(s)`);
+    });
+});
