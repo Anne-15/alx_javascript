@@ -34,7 +34,5 @@ request(apiUrl, (error, response, body) => {
     });
 
     // Display the results
-    Object.entries(completedTasksByUser).forEach(([userId, completedTasks]) => {
-        console.log(`User ${userId}: ${completedTasks} completed task(s)`);
-    });
+    console.log(JSON.stringify(completedTasksByUser));
 });
