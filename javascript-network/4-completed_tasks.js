@@ -34,5 +34,5 @@ request(apiUrl, (error, response, body) => {
     });
 
     // Display the results
-    console.log(JSON.stringify(completedTasksByUser));
+    console.log(completedTasksByUser);
 });
